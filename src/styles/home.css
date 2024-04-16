@@ -1,0 +1,92 @@
+/* .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+} */
+
+/* .calendar-container {
+    margin-bottom: 20px;
+} */
+
+/* .custom-calendar {
+    width: 300px;
+    max-width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+} */
+
+/* .digital-clock {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+} */
+
+/* .digital-clock-container {
+    margin-top: 20px;
+} */
+
+
+.home {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('path_to_your_image.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff; /* Set text color to white for better contrast */
+}
+
+.calendar-container {
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.custom-calendar {
+    width: 400px;
+    max-width: 100%;
+    border: none;
+}
+
+.digital-clock {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.digital-clock-container {
+    margin-top: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background */
+    padding: 20px;
+    border-radius: 5px;
+}
+
+/* home.css */
+
+/* Styles for the white box */
+.white-box {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    color: black;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 24px;
+    font-weight: bold;
+    border: 2px solid #24b844;
+}
+
+/* Styles for the current date */
+.current-date {
+    background-color: #24b844 !important; /* Green background for the current date */
+    color: white !important; /* White text color for the current date */
+    border-radius: 50% !important; /* Make the current date circular */
+}
+

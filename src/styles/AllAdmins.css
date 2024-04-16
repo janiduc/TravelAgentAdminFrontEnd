@@ -1,0 +1,62 @@
+/* Add this CSS to your existing stylesheet or create a new one */
+
+/* Styles for the DataTable component */
+.p-datatable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .p-datatable .p-datatable-thead > tr > th,
+  .p-datatable .p-datatable-tbody > tr > td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .p-datatable .p-datatable-thead > tr > th {
+    background-color: #f0f0f0;
+  }
+  
+  .p-datatable .p-datatable-tbody > tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Styles for the link buttons */
+  .p-button-text {
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .p-button-text:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 767px) {
+    .p-grid {
+      display: block;
+    }
+  
+    .p-grid .p-col {
+      width: 100%;
+      float: none;
+    }
+  }
+  /* Add this CSS to your existing stylesheet or create a new one */
+
+.p-grid {
+    margin-bottom: 20px;
+    display: block; /* Change display to block */
+  }
+  
+  .p-col-12,
+  .p-col-6,
+  .p-col-4 {
+    flex: 0 0 100%; /* Adjust the flex property to make it take up the full width */
+    max-width: 100%;
+  }
+  
+  /* Add any other necessary styles for your layout */
+  
+  
