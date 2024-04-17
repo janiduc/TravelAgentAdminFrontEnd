@@ -7,9 +7,9 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import '../styles/AllAdmins.css';
 
-const AllAdmins = () => {
-  const [admins, setAdmins] = useState([]);
-  const [adminId, setAdminId] = useState('');
+const AllDrivers = () => {
+  const [drivers, setDrivers] = useState([]);
+  const [driverId, setDriverId] = useState('');
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(false);
@@ -20,17 +20,17 @@ const AllAdmins = () => {
     }, 500);
 
     return () => clearTimeout(delayDebounce);
-  }, [adminId, name, username]);
+  }, [driverId, name, username]);
 
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:4000/admins/getUsers`);
+      const response = await fetch(`http://localhost:4000/drivers/getUsers`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      setAdmins(data.admin);
+      setDrivers(data.driver);
     } catch (error) {
       console.error('Error fetching Admin data:', error);
     } finally {
@@ -38,19 +38,19 @@ const AllAdmins = () => {
     }
   };
 
-  const data = useMemo(() => admins, [admins]);
+  const data = useMemo(() => drivers, [drivers]);
 
   return (
     <div>
-      <h3 className="section-title">All Admins</h3>
+      <h3 className="section-title">All Drivers</h3>
       
       {loading && <div>Loading...</div>}
       <DataTable value={data} loading={loading} className="p-datatable-striped">
-        <Column field="adminnameA" header="Name" />
-        <Column field="nameA" header="Username" />
+        <Column field="drivername" header="Name" />
+        <Column field="nameD" header="Drivername" />
         <Column
           body={(rowData) => (
-            <Link to={`/adminSpecific/${rowData._id}`} className="p-button p-button-text">
+            <Link to={`/driverSpecific/${rowData._id}`} className="p-button p-button-text">
               View Details
             </Link>
           )}
@@ -60,4 +60,4 @@ const AllAdmins = () => {
   );
 };
 
-export default AllAdmins;
+export default AllDrivers;

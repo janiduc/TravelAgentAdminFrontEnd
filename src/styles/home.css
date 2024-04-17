@@ -38,12 +38,12 @@
     background-image: url('path_to_your_image.jpg');
     background-size: cover;
     background-position: center;
-    color: #fff; /* Set text color to white for better contrast */
+    color: #ffffff; /* Set text color to white for better contrast */
 }
 
 .calendar-container {
     margin-bottom: 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background */
+    background-color: rgba(222, 135, 30, 0.806); /* Add a semi-transparent white background */
     padding: 20px;
     border-radius: 5px;
 }
@@ -57,12 +57,12 @@
 .digital-clock {
     font-size: 2rem;
     font-weight: bold;
-    color: #333;
+    color: #fafafa;
 }
 
 .digital-clock-container {
     margin-top: 20px;
-    background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background */
+    background-color: rgba(222, 135, 30, 0.806); /* Add a semi-transparent white background */
     padding: 20px;
     border-radius: 5px;
 }
@@ -85,7 +85,7 @@
 
 /* Styles for the current date */
 .current-date {
-    background-color: #24b844 !important; /* Green background for the current date */
+    background-color: #eded1057 !important; /* Green background for the current date */
     color: white !important; /* White text color for the current date */
     border-radius: 50% !important; /* Make the current date circular */
 }

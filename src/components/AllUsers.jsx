@@ -7,9 +7,9 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import '../styles/AllAdmins.css';
 
-const AllAdmins = () => {
-  const [admins, setAdmins] = useState([]);
-  const [adminId, setAdminId] = useState('');
+const AllUsers = () => {
+  const [users, setUsers] = useState([]);
+  const [userId, setUserId] = useState('');
   const [name, setName] = useState('');
   const [username, setUsername] = useState('');
   const [loading, setLoading] = useState(false);
@@ -20,37 +20,37 @@ const AllAdmins = () => {
     }, 500);
 
     return () => clearTimeout(delayDebounce);
-  }, [adminId, name, username]);
+  }, [userId, name, username]);
 
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`http://localhost:4000/admins/getUsers`);
+      const response = await fetch(`http://localhost:4000/users/getUsers`);
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
       const data = await response.json();
-      setAdmins(data.admin);
+      setUsers(data.user);
     } catch (error) {
-      console.error('Error fetching Admin data:', error);
+      console.error('Error fetching User data:', error);
     } finally {
       setLoading(false);
     }
   };
 
-  const data = useMemo(() => admins, [admins]);
+  const data = useMemo(() => users, [users]);
 
   return (
     <div>
-      <h3 className="section-title">All Admins</h3>
+      <h3 className="section-title">All Users</h3>
       
       {loading && <div>Loading...</div>}
       <DataTable value={data} loading={loading} className="p-datatable-striped">
-        <Column field="adminnameA" header="Name" />
-        <Column field="nameA" header="Username" />
+        <Column field="username" header="UserName" />
+        <Column field="name" header="Name" />
         <Column
           body={(rowData) => (
-            <Link to={`/adminSpecific/${rowData._id}`} className="p-button p-button-text">
+            <Link to={`/userSpecific/${rowData._id}`} className="p-button p-button-text">
               View Details
             </Link>
           )}
@@ -60,4 +60,4 @@ const AllAdmins = () => {
   );
 };
 
-export default AllAdmins;
+export default AllUsers;

@@ -8,7 +8,16 @@ export default function Navbar() {
   const items = [
     { label: 'Home', icon: 'pi pi-home', url: '/' },
     { label: 'All Admins', icon: 'pi pi-plus', url: '/alladmin' },
-    { label: 'Create Admin', icon: 'pi pi-home', url: '/createadmin'}
+    { label: 'Client', icon: 'pi pi-user', url: '/user' },
+    { label: 'Create Booking', icon: 'pi pi-user', url: '/createbooking' },
+    { label: 'Bookings', icon: 'pi pi-user', url: '/booking' },
+    { label: 'Create Driver', icon: 'pi pi-user', url: '/createdriver' },
+    { label: 'Driver', icon: 'pi pi-user', url: '/driver' },
+    { label: 'Create Vehicle', icon: 'pi pi-car', url: '/createvehicle' },
+    { label: 'Vehicle', icon: 'pi pi-car', url: '/vehicle' },
+    { label: 'Create Guide', icon: 'pi pi-book', url: '/createguide' },
+    { label: 'Guide', icon: 'pi pi-book', url: '/guide' }
+    //{ label: 'Create Admin', icon: 'pi pi-home', url: '/createadmin'}
     // Add other menu items here
   ];
 
