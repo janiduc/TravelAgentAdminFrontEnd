@@ -5,7 +5,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 //import '../styles/signup.css'
-const DriverSignUpPage = () => {
+const VehicleSignUpPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     username: '',
@@ -22,25 +22,23 @@ const DriverSignUpPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const nameD = formData.name;
-    const drivername = formData.username;
-    const passwordD = formData.password;
-    const addressD = formData.address;
-    const phoneD = formData.phone;
-    const genderD = formData.gender;
+    const vehicleID = formData.username;
+    const nameV = formData.name;
+    const passwordV = formData.password;
+    const vehicleType = formData.vehitype;
 
     try{
-      if(!confPassword && drivername && passwordD && nameD && addressD && phoneD && genderD) {
+      if(!confPassword && passwordV && nameV && vehicleID && vehicleType) {
         console.log('here2')
-        const response = await fetch("http://localhost:4000/drivers/create", {
+        const response = await fetch("http://localhost:4000/vehicles/create", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({drivername, passwordD, nameD, addressD, phoneD, genderD })
+          body: JSON.stringify({vehicleID, passwordV, vehicleType, nameV })
         });
         setSubmitted(false);
-        navigate('/driver');
+        navigate('/vehicle');
       }
       setSubmitted(true);
 
@@ -56,6 +54,15 @@ const DriverSignUpPage = () => {
         <Card title="Sign-Up" className="login-card p-shadow-3 card">
           <form onSubmit={handleSubmit} className="p-fluid">
             <div className="p-field">
+              <label htmlFor="username">VehicleID</label>
+              <InputText
+                id="username"
+                value={formData.username}
+                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+                className="p-inputtext-lg"
+              />
+            </div>
+            <div className="p-field">
               <label htmlFor="username">Name</label>
               <InputText
                 id="name"
@@ -64,40 +71,13 @@ const DriverSignUpPage = () => {
                 className="p-inputtext-lg"
               />
             </div>
-            <div className="p-field">
-              <label htmlFor="username">Username</label>
-              <InputText
-                id="username"
-                value={formData.username}
-                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
-                className="p-inputtext-lg"
-              />
-            </div>
             
             <div className="p-field">
-              <label htmlFor="username">Address</label>
+              <label htmlFor="username">Vehicle Type</label>
               <InputText
-                id="address"
-                value={formData.address}
-                onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                className="p-inputtext-lg"
-              />
-            </div>
-            <div className="p-field">
-              <label htmlFor="username">Phone</label>
-              <InputText
-                id="phone"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="p-inputtext-lg"
-              />
-            </div>
-            <div className="p-field">
-              <label htmlFor="username">Gender</label>
-              <InputText
-                id="gender"
-                value={formData.gender}
-                onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
+                id="vehitype"
+                value={formData.vehitype}
+                onChange={(e) => setFormData({ ...formData, vehitype: e.target.value })}
                 className="p-inputtext-lg"
               />
             </div>
@@ -142,4 +122,4 @@ const DriverSignUpPage = () => {
   );
 };
 
-export default DriverSignUpPage;
+export default VehicleSignUpPage;

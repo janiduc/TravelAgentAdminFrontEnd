@@ -4,15 +4,13 @@ import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
-//import '../styles/signup.css'
-const DriverSignUpPage = () => {
+
+const GenaratePasswordPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     username: '',
     password: '',
   });
-
-  //TODO:Set an initial touch for confirm password
 
   let navigate = useNavigate(); 
 
@@ -22,25 +20,21 @@ const DriverSignUpPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const nameD = formData.name;
-    const drivername = formData.username;
-    const passwordD = formData.password;
-    const addressD = formData.address;
-    const phoneD = formData.phone;
-    const genderD = formData.gender;
+    const nameA = formData.name;
+    const adminnameA = formData.username;
+    const passwordA = formData.password;
 
     try{
-      if(!confPassword && drivername && passwordD && nameD && addressD && phoneD && genderD) {
-        console.log('here2')
-        const response = await fetch("http://localhost:4000/drivers/create", {
+      if(!confPassword && adminnameA && passwordA && nameA) {
+        const response = await fetch("http://localhost:4000/admins/create", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({drivername, passwordD, nameD, addressD, phoneD, genderD })
+          body: JSON.stringify({adminnameA, passwordA, nameA })
         });
         setSubmitted(false);
-        navigate('/driver');
+        navigate('/login');
       }
       setSubmitted(true);
 
@@ -48,6 +42,11 @@ const DriverSignUpPage = () => {
       console.error("Signup Error: ", error);
       setSubmitted(true);
     }
+  };
+
+  const generatePassword = () => {
+    const password = Math.random().toString(36).slice(-8);
+    setFormData({ ...formData, password });
   };
 
   return (
@@ -73,44 +72,19 @@ const DriverSignUpPage = () => {
                 className="p-inputtext-lg"
               />
             </div>
-            
-            <div className="p-field">
-              <label htmlFor="username">Address</label>
-              <InputText
-                id="address"
-                value={formData.address}
-                onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                className="p-inputtext-lg"
-              />
-            </div>
-            <div className="p-field">
-              <label htmlFor="username">Phone</label>
-              <InputText
-                id="phone"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="p-inputtext-lg"
-              />
-            </div>
-            <div className="p-field">
-              <label htmlFor="username">Gender</label>
-              <InputText
-                id="gender"
-                value={formData.gender}
-                onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
-                className="p-inputtext-lg"
-              />
-            </div>
-
-
             <div className="p-field">
               <label htmlFor="password">Password</label>
               <InputText
                 id="password"
-                type="password"
+                //type="password"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 className="p-inputtext-lg"
+              />
+              <Button
+                label="Generate Password"
+                onClick={generatePassword}
+                className="p-button-rounded p-button-sm p-button-info"
               />
             </div>
             <div className="p-field">
@@ -123,18 +97,18 @@ const DriverSignUpPage = () => {
               />
             </div>
             {confPassword && (
-            <Message severity="error" text="Passwords are not same. Please try again." />
-          )}
+              <Message severity="error" text="Passwords are not the same. Please try again." />
+            )}
             <div className="p-field">
               <Button
-                label="Login"
+                label="Sign Up"
                 type="submit"
                 className="p-button-rounded p-button-lg p-button-success"
               />
             </div>
           </form>
           {submitted && (
-            <Message severity="error" text="Fill All details. Please try again." />
+            <Message severity="error" text="Please fill in all details and try again." />
           )}
         </Card>
       </div>
@@ -142,4 +116,4 @@ const DriverSignUpPage = () => {
   );
 };
 
-export default DriverSignUpPage;
+export default GenaratePasswordPage;

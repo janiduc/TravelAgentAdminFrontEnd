@@ -16,7 +16,9 @@ export default function Navbar() {
     { label: 'Create Vehicle', icon: 'pi pi-car', url: '/createvehicle' },
     { label: 'Vehicle', icon: 'pi pi-car', url: '/vehicle' },
     { label: 'Create Guide', icon: 'pi pi-book', url: '/createguide' },
-    { label: 'Guide', icon: 'pi pi-book', url: '/guide' }
+    { label: 'Guide', icon: 'pi pi-book', url: '/guide' },
+    { label: 'About Us', icon: 'pi pi-plus', url: '/about' },
+    { label: 'Contact Us', icon: 'pi pi-user', url: '/contact' }
     //{ label: 'Create Admin', icon: 'pi pi-home', url: '/createadmin'}
     // Add other menu items here
   ];

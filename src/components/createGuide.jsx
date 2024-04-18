@@ -5,7 +5,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 //import '../styles/signup.css'
-const DriverSignUpPage = () => {
+const GuideSignUpPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     username: '',
@@ -22,25 +22,25 @@ const DriverSignUpPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const nameD = formData.name;
-    const drivername = formData.username;
-    const passwordD = formData.password;
-    const addressD = formData.address;
-    const phoneD = formData.phone;
-    const genderD = formData.gender;
+    const nameG = formData.name;
+    const guidename = formData.username;
+    const passwordG = formData.password;
+    const addressG = formData.address;
+    const phoneG = formData.phone;
+    const genderG = formData.gender;
 
     try{
-      if(!confPassword && drivername && passwordD && nameD && addressD && phoneD && genderD) {
+      if(!confPassword && guidename && passwordG && nameG && addressG && phoneG && genderG) {
         console.log('here2')
-        const response = await fetch("http://localhost:4000/drivers/create", {
+        const response = await fetch("http://localhost:4000/guides/create", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({drivername, passwordD, nameD, addressD, phoneD, genderD })
+          body: JSON.stringify({guidename, passwordG, nameG, addressG, phoneG, genderG })
         });
         setSubmitted(false);
-        navigate('/driver');
+        navigate('/guide');
       }
       setSubmitted(true);
 
@@ -142,4 +142,4 @@ const DriverSignUpPage = () => {
   );
 };
 
-export default DriverSignUpPage;
+export default GuideSignUpPage;
