@@ -57,6 +57,31 @@
     max-width: 100%;
   }
   
+/*..............*/
+
+.p-button-text {
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  font-size: 1rem;
+  color: #007ad9; /* Button text color */
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.p-button-text:hover {
+  text-decoration: underline;
+}
+
+.p-button-text:focus {
+  outline: none;
+}
+
+.p-button-text:active {
+  transform: translateY(1px); /* Add a slight Y-axis movement when clicked */
+}
+
   /* Add any other necessary styles for your layout */
   
   

@@ -3,6 +3,8 @@ import emailjs from '@emailjs/browser';
 import { InputTextarea } from 'primereact/inputtextarea';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
+import '../styles/contact.css'; // Import the CSS file for styling
+
 
 const Contact = () => {
   // const [formData, setFormData] = useState({

@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
+import { Calendar } from 'primereact/calendar';
+import '../styles/createBooking.css';
 
 const BookingSignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -11,8 +13,8 @@ const BookingSignUpPage = () => {
     Sdes: '',
     Edes: '',
     //password: '',
-    Sdate: '',
-    Edate: '',
+    Sdate: null,
+    Edate: null,
     disten: '',
     Tcost: '',
     Vtype: '',
@@ -143,21 +145,27 @@ const BookingSignUpPage = () => {
             </div>
             
             <div className="p-field">
-              <label htmlFor="username">Starting Date</label>
-              <InputText
+              <label htmlFor="Sdate">Starting Date</label>
+              <Calendar
                 id="Sdate"
                 value={formData.Sdate}
-                onChange={(e) => setFormData({ ...formData, Sdate: e.target.value })}
+                onChange={(e) => setFormData({ ...formData, Sdate: e.value })}
                 className="p-inputtext-lg"
+                showIcon
+                dateFormat="yy-mm-dd"
+                inputClassName="calendar-container"
               />
             </div>
             <div className="p-field">
-              <label htmlFor="username">Ending Date</label>
-              <InputText
+              <label htmlFor="Edate">Ending Date</label>
+              <Calendar
                 id="Edate"
                 value={formData.Edate}
-                onChange={(e) => setFormData({ ...formData, Edate: e.target.value })}
+                onChange={(e) => setFormData({ ...formData, Edate: e.value })}
                 className="p-inputtext-lg"
+                showIcon
+                dateFormat="yy-mm-dd"
+                inputClassName="calendar-container"
               />
             </div>
             <div className="p-field">
@@ -218,7 +226,7 @@ const BookingSignUpPage = () => {
 
             <div className="p-field">
               <Button
-                label="Sign Up"
+                label="SUBMIT"
                 type="submit"
                 className="p-button-rounded p-button-lg p-button-success"
               />

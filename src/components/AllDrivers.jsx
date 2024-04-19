@@ -38,6 +38,13 @@ const AllDrivers = () => {
     }
   };
 
+  const handleUpdate = (id) => {
+    // // Find the driver by id and pass it to the update form
+    // const driver = drivers.find((driver) => driver._id === id);
+    // return <UpdateDriverForm driver={driver} onUpdate={onUpdate} />;
+    navigate('/updateDriverForm/id');
+};
+
   const data = useMemo(() => drivers, [drivers]);
 
   return (
@@ -49,10 +56,14 @@ const AllDrivers = () => {
         <Column field="drivername" header="Name" />
         <Column field="nameD" header="Drivername" />
         <Column
-          body={(rowData) => (
+          body={(rowData) => (<div>
             <Link to={`/driverSpecific/${rowData._id}`} className="p-button p-button-text">
               View Details
             </Link>
+            <Link to={`/updateDriverForm/${rowData._id}`} className="p-button p-button-text">
+              Update
+            </Link>
+            </div>
           )}
         />
       </DataTable>

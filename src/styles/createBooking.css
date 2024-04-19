@@ -1,0 +1,7 @@
+
+.calendar-container {
+    margin-bottom: 20px;
+    background-color: rgba(222, 135, 30, 0.806); /* Add a semi-transparent white background */
+    padding: 20px;
+    border-radius: 5px;
+}
