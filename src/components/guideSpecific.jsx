@@ -24,6 +24,11 @@ const GuideSpecific = () => {
     }, [id]);
 
     const handleDelete = async () => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this guide?');
+        if (!confirmDelete) {
+            return;
+        }
+
         try {
             const response = await fetch(`http://localhost:4000/guides/${id}`, {
                 method: 'DELETE',
@@ -37,27 +42,37 @@ const GuideSpecific = () => {
         }
     };
 
+    const styles = {
+        deleteButton: {
+          backgroundColor: '#dc3545',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          padding: '8px 16px',
+          cursor: 'pointer',
+          outline: 'none',
+          marginLeft: '10px',
+        },
+      };
+
     return (
         <div>
-            <h1>Guide Specif data</h1>
+            <h1>Guide Specific Data</h1>
             {guideData ? (
-                // <Card title="Admin Specific Details" className="ticket-card">
                 <div>
                     <div>
                         <p>ID: {guideData._id}</p>
-                        <p>Price: ${guideData.guidename}</p>
-                        <p>Availability: {guideData.nameG}</p>
-                        <p>Ticket ID: {guideData.addressG}</p>
-                        <p>Ticket ID: {guideData.phoneG}</p>
-                        <p>Ticket ID: {guideData.genderG}</p>
-                        <p>Ticket Type: {guideData.createdAt}</p>
+                        <p>Guide User Name: {guideData.guidename}</p>
+                        <p>Guide Full Name: {guideData.nameG}</p>
+                        <p>Address: {guideData.addressG}</p>
+                        <p>Phone: {guideData.phoneG}</p>
+                        <p>Gender: {guideData.genderG}</p>
+                        <p>Created At: {guideData.createdAt}</p>
                     </div>
                     <div>
-                        {/*<Button label="Edit" className="p-button-raised p-button-info p-mr-2" onClick={() => navigate(`/editticket/${ticketData.ticketID}`)} />*/}
-                        <button onClick={handleDelete} />
+                        <button style={styles.deleteButton} onClick={handleDelete}>Delete</button>
                     </div>
-                    </div>
-                // </Card>
+                </div>
             ) : (
                 <p>Loading guide data...</p>
             )}

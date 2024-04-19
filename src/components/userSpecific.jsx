@@ -24,6 +24,11 @@ const UserSpecific = () => {
     }, [id]);
 
     const handleDelete = async () => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this user?');
+        if (!confirmDelete) {
+            return;
+        }
+
         try {
             const response = await fetch(`http://localhost:4000/users/${id}`, {
                 method: 'DELETE',
@@ -37,27 +42,37 @@ const UserSpecific = () => {
         }
     };
 
+    const styles = {
+        deleteButton: {
+          backgroundColor: '#dc3545',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          padding: '8px 16px',
+          cursor: 'pointer',
+          outline: 'none',
+          marginLeft: '10px',
+        },
+      };
+
     return (
         <div>
-            <h1>User Specif data</h1>
+            <h1>User Specific Data</h1>
             {userData ? (
-                // <Card title="Admin Specific Details" className="ticket-card">
                 <div>
                     <div>
                         <p>ID: {userData._id}</p>
-                        <p>Price: ${userData.username}</p>
-                        <p>Availability: {userData.name}</p>
-                        <p>Ticket ID: {userData.address}</p>
-                        <p>Ticket ID: {userData.phone}</p>
-                        <p>Ticket ID: {userData.gender}</p>
-                        <p>Ticket Type: {userData.createdAt}</p>
+                        <p>Client User Name: {userData.username}</p>
+                        <p>Client Full Name: {userData.name}</p>
+                        <p>Address: {userData.address}</p>
+                        <p>Phone: {userData.phone}</p>
+                        <p>Gender: {userData.gender}</p>
+                        <p>Created At: {userData.createdAt}</p>
                     </div>
                     <div>
-                        {/*<Button label="Edit" className="p-button-raised p-button-info p-mr-2" onClick={() => navigate(`/editticket/${ticketData.ticketID}`)} />*/}
-                        <button onClick={handleDelete} />
+                        <button style={styles.deleteButton} onClick={handleDelete}>Delete</button>
                     </div>
-                    </div>
-                // </Card>
+                </div>
             ) : (
                 <p>Loading user data...</p>
             )}

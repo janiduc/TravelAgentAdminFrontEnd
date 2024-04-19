@@ -24,6 +24,11 @@ const AdminSpecific = () => {
     }, [id]);
 
     const handleDelete = async () => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this admin?');
+        if (!confirmDelete) {
+            return;
+        }
+
         try {
             const response = await fetch(`http://localhost:4000/admins/${id}`, {
                 method: 'DELETE',
@@ -37,25 +42,34 @@ const AdminSpecific = () => {
         }
     };
 
+    const styles = {
+        deleteButton: {
+          backgroundColor: '#dc3545',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          padding: '8px 16px',
+          cursor: 'pointer',
+          outline: 'none',
+          marginLeft: '10px',
+        },
+      };
+
     return (
         <div>
-            <h1>Admin Specif data</h1>
+            <h1>Admin Specific Data</h1>
             {adminData ? (
-                // <Card title="Admin Specific Details" className="ticket-card">
                 <div>
                     <div>
                         <p>ID: {adminData._id}</p>
-                        <p>Price: ${adminData.adminnameA}</p>
-                        <p>Availability: {adminData.nameA}</p>
-                        <p>Ticket ID: {adminData.passwordA}</p>
-                        <p>Ticket Type: {adminData.createdAt}</p>
+                        <p>Admin User Name: {adminData.adminnameA}</p>
+                        <p>Full Name: {adminData.nameA}</p>
+                        <p>Created At: {adminData.createdAt}</p>
                     </div>
                     <div>
-                        {/*<Button label="Edit" className="p-button-raised p-button-info p-mr-2" onClick={() => navigate(`/editticket/${ticketData.ticketID}`)} />*/}
-                        <button onClick={handleDelete} />
+                        <button style={styles.deleteButton} onClick={handleDelete}>Delete</button>
                     </div>
-                    </div>
-                // </Card>
+                </div>
             ) : (
                 <p>Loading admin data...</p>
             )}

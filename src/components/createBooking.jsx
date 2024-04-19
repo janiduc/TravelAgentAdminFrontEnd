@@ -6,6 +6,8 @@ import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { Calendar } from 'primereact/calendar';
 import '../styles/createBooking.css';
+import { Dropdown } from 'primereact/dropdown';
+
 
 const BookingSignUpPage = () => {
   const [formData, setFormData] = useState({
@@ -186,15 +188,24 @@ const BookingSignUpPage = () => {
                 className="p-inputtext-lg"
               />
             </div>
-            <div className="p-field">
-              <label htmlFor="username">Vehicle Type</label>
-              <InputText
-                id="Vtype"
-                value={formData.Vtype}
-                onChange={(e) => setFormData({ ...formData, Vtype: e.target.value })}
-                className="p-inputtext-lg"
-              />
-            </div>
+            <div className="p-field" style={{ marginBottom: '65px' }}>
+               <label htmlFor="Vtype">Vehicle Type</label>
+                  <Dropdown
+                    id="Vtype"
+                    value={formData.Vtype}
+                    options={[
+                      { label: 'Car', value: 'Car' },
+                      { label: 'Bus', value: 'Bus' },
+                      { label: 'Van', value: 'Van' },
+                      // Add more options as needed
+                    ]}
+                    onChange={(e) => setFormData({ ...formData, Vtype: e.value })}
+                    optionLabel="label"
+                    placeholder="Select a Vehicle Type"
+                    className="p-inputtext-lg"
+                  />
+              </div>
+
             <div className="p-field">
               <label htmlFor="username">Vehicle Detail</label>
               <InputText

@@ -24,6 +24,11 @@ const BookingSpecific = () => {
     }, [id]);
 
     const handleDelete = async () => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this booking?');
+        if (!confirmDelete) {
+            return;
+        }
+
         try {
             const response = await fetch(`http://localhost:4000/bookings/${id}`, {
                 method: 'DELETE',
@@ -37,33 +42,43 @@ const BookingSpecific = () => {
         }
     };
 
+    const styles = {
+        deleteButton: {
+          backgroundColor: '#dc3545',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          padding: '8px 16px',
+          cursor: 'pointer',
+          outline: 'none',
+          marginLeft: '10px',
+        },
+      };
+
     return (
         <div>
-            <h1>Booking Specif data</h1>
+            <h1>Booking Specific Data</h1>
             {bookingData ? (
-                // <Card title="Admin Specific Details" className="ticket-card">
                 <div>
                     <div>
                         <p>ID: {bookingData._id}</p>
-                        <p>Price: ${bookingData.userNameBooking}</p>
-                        <p>Availability: {bookingData.startingDes}</p>
-                        <p>Ticket ID: {bookingData.endingDes}</p>
-                        <p>Price: ${bookingData.startDate}</p>
-                        <p>Availability: {bookingData.endDate}</p>
-                        <p>Ticket ID: {bookingData.distance}</p>
-                        <p>Price: ${bookingData.totalCost}</p>
-                        <p>Availability: {bookingData.vehicleType}</p>
-                        <p>Ticket ID: {bookingData.vehicleDetail}</p>
-                        <p>Availability: {bookingData.driverDetail}</p>
-                        <p>Ticket ID: {bookingData.guideDetail}</p>
-                        <p>Ticket Type: {bookingData.createdAt}</p>
+                        <p>User Name: {bookingData.userNameBooking}</p>
+                        <p>Starting Destination: {bookingData.startingDes}</p>
+                        <p>Ending Destination: {bookingData.endingDes}</p>
+                        <p>Start Date: {bookingData.startDate}</p>
+                        <p>End Date: {bookingData.endDate}</p>
+                        <p>Distance: {bookingData.distance}</p>
+                        <p>Total Cost: ${bookingData.totalCost}</p>
+                        <p>Vehicle Type: {bookingData.vehicleType}</p>
+                        <p>Vehicle Detail: {bookingData.vehicleDetail}</p>
+                        <p>Driver Detail: {bookingData.driverDetail}</p>
+                        <p>Guide Detail: {bookingData.guideDetail}</p>
+                        <p>Created At: {bookingData.createdAt}</p>
                     </div>
                     <div>
-                        {/*<Button label="Edit" className="p-button-raised p-button-info p-mr-2" onClick={() => navigate(`/editticket/${ticketData.ticketID}`)} />*/}
-                        <button onClick={handleDelete} />
+                        <button style={styles.deleteButton} onClick={handleDelete}>Delete</button>
                     </div>
-                    </div>
-                // </Card>
+                </div>
             ) : (
                 <p>Loading booking data...</p>
             )}

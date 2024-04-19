@@ -4,20 +4,26 @@ import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
-//import '../styles/signup.css'
+import { Dropdown } from 'primereact/dropdown';
+
 const VehicleSignUpPage = () => {
   const [formData, setFormData] = useState({
     name: '',
     username: '',
     password: '',
+    vehitype: '',
   });
-
-  //TODO:Set an initial touch for confirm password
 
   let navigate = useNavigate(); 
 
   const [submitted, setSubmitted] = useState(false);
   const [confPassword, setconfPassword] = useState(false);
+
+  const vehicleTypes = [
+    {label: 'Car', value: 'car'},
+    {label: 'Bus', value: 'bus'},
+    {label: 'Van', value: 'van'},
+  ];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +35,6 @@ const VehicleSignUpPage = () => {
 
     try{
       if(!confPassword && passwordV && nameV && vehicleID && vehicleType) {
-        console.log('here2')
         const response = await fetch("http://localhost:4000/vehicles/create", {
           method: 'POST',
           headers: {
@@ -72,16 +77,16 @@ const VehicleSignUpPage = () => {
               />
             </div>
             
-            <div className="p-field">
+            <div className="p-field" style={{ marginBottom: '60px' }}>
               <label htmlFor="username">Vehicle Type</label>
-              <InputText
+              <Dropdown
                 id="vehitype"
                 value={formData.vehitype}
-                onChange={(e) => setFormData({ ...formData, vehitype: e.target.value })}
-                className="p-inputtext-lg"
+                options={vehicleTypes}
+                onChange={(e) => setFormData({ ...formData, vehitype: e.value })}
+                placeholder="Select a Vehicle Type"
               />
             </div>
-
 
             <div className="p-field">
               <label htmlFor="password">Password</label>

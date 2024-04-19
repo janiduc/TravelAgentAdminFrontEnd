@@ -24,6 +24,11 @@ const DriverSpecific = () => {
     }, [id]);
 
     const handleDelete = async () => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this driver?');
+        if (!confirmDelete) {
+            return;
+        }
+
         try {
             const response = await fetch(`http://localhost:4000/drivers/${id}`, {
                 method: 'DELETE',
@@ -52,25 +57,22 @@ const DriverSpecific = () => {
 
     return (
         <div>
-            <h1>Driver Specif data</h1>
+            <h1>Driver Specific Data</h1>
             {driverData ? (
-                // <Card title="Admin Specific Details" className="ticket-card">
                 <div>
                     <div>
                         <p>ID: {driverData._id}</p>
-                        <p>Price: ${driverData.drivername}</p>
-                        <p>Availability: {driverData.nameD}</p>
-                        <p>Ticket ID: {driverData.addressD}</p>
-                        <p>Ticket ID: {driverData.phoneD}</p>
-                        <p>Ticket ID: {driverData.genderD}</p>
-                        <p>Ticket Type: {driverData.createdAt}</p>
+                        <p>Driver User Name: {driverData.drivername}</p>
+                        <p>Driver Full Name: {driverData.nameD}</p>
+                        <p>Address: {driverData.addressD}</p>
+                        <p>Phone: {driverData.phoneD}</p>
+                        <p>Gender: {driverData.genderD}</p>
+                        <p>Created At: {driverData.createdAt}</p>
                     </div>
                     <div>
-                        {/*<Button label="Edit" className="p-button-raised p-button-info p-mr-2" onClick={() => navigate(`/editticket/${ticketData.ticketID}`)} />*/}
                         <button style={styles.deleteButton} onClick={handleDelete}>Delete</button>
                     </div>
-                    </div>
-                // </Card>
+                </div>
             ) : (
                 <p>Loading driver data...</p>
             )}

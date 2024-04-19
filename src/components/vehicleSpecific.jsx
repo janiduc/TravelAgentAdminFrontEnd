@@ -24,6 +24,11 @@ const VehicleSpecific = () => {
     }, [id]);
 
     const handleDelete = async () => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this vehicle?');
+        if (!confirmDelete) {
+            return;
+        }
+
         try {
             const response = await fetch(`http://localhost:4000/vehicles/${id}`, {
                 method: 'DELETE',
@@ -37,27 +42,37 @@ const VehicleSpecific = () => {
         }
     };
 
+    const styles = {
+        deleteButton: {
+          backgroundColor: '#dc3545',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          padding: '8px 16px',
+          cursor: 'pointer',
+          outline: 'none',
+          marginLeft: '10px',
+        },
+      };
+
     return (
         <div>
-            <h1>Vehicle Specif data</h1>
+            <h1>Vehicle Specific Data</h1>
             {vehicleData ? (
-                // <Card title="Admin Specific Details" className="ticket-card">
                 <div>
                     <div>
                         <p>ID: {vehicleData._id}</p>
-                        <p>Price: ${vehicleData.vehicleID}</p>
-                        <p>Availability: {vehicleData.vehicleType}</p>
-                        <p>Ticket ID: {vehicleData.nameV}</p>
-                        <p>Ticket Type: {vehicleData.createdAt}</p>
+                        <p>Vehicle ID: {vehicleData.vehicleID}</p>
+                        <p>Vehicle Type: {vehicleData.vehicleType}</p>
+                        <p>Name: {vehicleData.nameV}</p>
+                        <p>Created At: {vehicleData.createdAt}</p>
                     </div>
                     <div>
-                        {/*<Button label="Edit" className="p-button-raised p-button-info p-mr-2" onClick={() => navigate(`/editticket/${ticketData.ticketID}`)} />*/}
-                        <button onClick={handleDelete} />
+                        <button style={styles.deleteButton} onClick={handleDelete}>Delete</button>
                     </div>
-                    </div>
-                // </Card>
+                </div>
             ) : (
-                <p>Loading driver data...</p>
+                <p>Loading vehicle data...</p>
             )}
         </div>
     );

@@ -57,8 +57,8 @@ const Home = () => {
             </div>
             <div className="description-container">
                 <h2>About TravelSri Travel Agent</h2>
-                <p><strong>Vision:</strong> To be the leading travel agency providing unforgettable travel experiences.</p>
-                <p><strong>Mission:</strong> To deliver exceptional travel services and exceed customer expectations.</p>
+                <p><strong>Mission:</strong> To simplify your journey to unforgettable experiences. Explore, compare, and book your dream vacation with ease.</p>
+                <p><strong>Vision:</strong> Our vision for the travel agent web application is to empower both travel agents and travelers with a comprehensive, user-friendly platform that redefines the booking experience. Our application will serve as a one-stop solution for travel agents, offering intuitive tools to efficiently manage bookings, access real-time information from suppliers, and provide personalized recommendations to clients. For travelers, our platform will offer a seamless and engaging experience, allowing them to discover, plan, and book their dream vacations with ease. By leveraging technology to simplify complex processes and enhance communication between agents and travelers, we aim to revolutionize the way people explore the world, fostering unforgettable travel experiences and lasting memories.</p>
             </div>
         </div>
     );

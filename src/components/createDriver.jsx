@@ -10,6 +10,9 @@ const DriverSignUpPage = () => {
     name: '',
     username: '',
     password: '',
+    address: '',
+    phone: '',
+    gender: '',
   });
 
   //TODO:Set an initial touch for confirm password
@@ -101,7 +104,6 @@ const DriverSignUpPage = () => {
                 className="p-inputtext-lg"
               />
             </div>
-
 
             <div className="p-field">
               <label htmlFor="password">Password</label>
