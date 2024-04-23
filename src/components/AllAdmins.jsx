@@ -38,6 +38,13 @@ const AllAdmins = () => {
     }
   };
 
+  const handleUpdate = (id) => {
+    // // Find the driver by id and pass it to the update form
+    // const driver = drivers.find((driver) => driver._id === id);
+    // return <UpdateDriverForm driver={driver} onUpdate={onUpdate} />;
+    navigate('/updateAdminForm/id');
+  };
+
   const data = useMemo(() => admins, [admins]);
 
   return (
@@ -49,10 +56,14 @@ const AllAdmins = () => {
         <Column field="adminnameA" header="Name" />
         <Column field="nameA" header="Username" />
         <Column
-          body={(rowData) => (
+          body={(rowData) => (<div>
             <Link to={`/adminSpecific/${rowData._id}`} className="p-button p-button-text">
               View Details
             </Link>
+            <Link to={`/updateAdminForm/${rowData._id}`} className="p-button p-button-text">
+              Update
+            </Link>
+            </div>
           )}
         />
       </DataTable>

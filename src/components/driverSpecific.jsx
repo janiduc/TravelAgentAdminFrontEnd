@@ -36,7 +36,7 @@ const DriverSpecific = () => {
             if (!response.ok) {
                 throw new Error('Failed to delete Driver');
             }
-            navigate('/');
+            navigate('/driver');
         } catch (error) {
             console.error('Error deleting Driver:', error);
         }

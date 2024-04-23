@@ -56,7 +56,7 @@ const VehicleSignUpPage = () => {
   return (
     <div className="login-container p-grid p-justify-center">
       <div className="p-col-12 p-md-6">
-        <Card title="Sign-Up" className="login-card p-shadow-3 card">
+        <Card title="Vehicle Registration" className="login-card p-shadow-3 card">
           <form onSubmit={handleSubmit} className="p-fluid">
             <div className="p-field">
               <label htmlFor="username">VehicleID</label>
@@ -112,7 +112,7 @@ const VehicleSignUpPage = () => {
           )}
             <div className="p-field">
               <Button
-                label="Login"
+                label="Register"
                 type="submit"
                 className="p-button-rounded p-button-lg p-button-success"
               />

@@ -38,6 +38,13 @@ const AllVehicles = () => {
     }
   };
 
+  const handleUpdate = (id) => {
+    // // Find the driver by id and pass it to the update form
+    // const driver = drivers.find((driver) => driver._id === id);
+    // return <UpdateDriverForm driver={driver} onUpdate={onUpdate} />;
+    navigate('/updateVehicleForm/id');
+  };
+
   const data = useMemo(() => vehicles, [vehicles]);
 
   return (
@@ -47,13 +54,16 @@ const AllVehicles = () => {
       {loading && <div>Loading...</div>}
       <DataTable value={data} loading={loading} className="p-datatable-striped">
         <Column field="vehicleID" header="Name" />
-        <Column field="nameV" header="Username" />
         <Column field="vehicleType" header="Type" />
         <Column
-          body={(rowData) => (
+          body={(rowData) => (<div>
             <Link to={`/vehicleSpecific/${rowData._id}`} className="p-button p-button-text">
               View Details
             </Link>
+            <Link to={`/updateVehicleForm/${rowData._id}`} className="p-button p-button-text">
+              Update
+            </Link>
+            </div>
           )}
         />
       </DataTable>

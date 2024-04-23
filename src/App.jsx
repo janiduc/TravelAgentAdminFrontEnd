@@ -28,6 +28,16 @@ import CreateBooking from './components/createBooking';
 import GenaratePasswordPage from './components/genaratePassword';
 import DriverList from './components/DriverList';
 import UpdateDriverForm from './components/updateDriverForm';
+import UserList from './components/UserList';
+import UpdateUserForm from './components/updateUserForm';
+import VehicleList from './components/VehicleList';
+import UpdateVehicleForm from './components/updateVehicleForm';
+import AdminList from './components/AdminList';
+import UpdateAdminForm from './components/updateAdminForm';
+import GuideList from './components/GuideList';
+import UpdateGuideForm from './components/updateGuideForm';
+import BookingList from './components/BookingList';
+import UpdateBookingForm from './components/updateBookingForm';
 
 function App() {
     return (
@@ -84,6 +94,16 @@ function App() {
                     <Route path="/genaratepassword" element={<GenaratePasswordPage/>}/>
                     <Route path="/DriverList" element={<DriverList/>}/>
                     <Route path="/updateDriverForm/:id" element={<UpdateDriverForm/>}/>
+                    <Route path="/UserList" element={<UserList/>}/>
+                    <Route path="/updateUserForm/:id" element={<UpdateUserForm/>}/>
+                    <Route path="/VehicleList" element={<VehicleList/>}/>
+                    <Route path="/updateVehicleForm/:id" element={<UpdateVehicleForm/>}/>
+                    <Route path="/AdminList" element={<AdminList/>}/>
+                    <Route path="/updateAdminForm/:id" element={<UpdateAdminForm/>}/>
+                    <Route path="/GuideList" element={<GuideList/>}/>
+                    <Route path="/updateGuideForm/:id" element={<UpdateGuideForm/>}/>
+                    <Route path="/BookingList" element={<BookingList/>}/>
+                    <Route path="/updateBookingForm/:id" element={<UpdateBookingForm/>}/>
 
                 </Routes>
             </Router>

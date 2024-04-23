@@ -36,7 +36,7 @@ const BookingSpecific = () => {
             if (!response.ok) {
                 throw new Error('Failed to delete Booking');
             }
-            navigate('/');
+            navigate('/booking');
         } catch (error) {
             console.error('Error deleting Booking:', error);
         }

@@ -36,7 +36,7 @@ const GuideSpecific = () => {
             if (!response.ok) {
                 throw new Error('Failed to delete Guide');
             }
-            navigate('/');
+            navigate('/guide');
         } catch (error) {
             console.error('Error deleting Guide:', error);
         }

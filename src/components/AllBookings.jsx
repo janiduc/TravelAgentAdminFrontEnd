@@ -38,6 +38,13 @@ const AllBookings = () => {
     }
   };
 
+  const handleUpdate = (id) => {
+    // // Find the driver by id and pass it to the update form
+    // const driver = drivers.find((driver) => driver._id === id);
+    // return <UpdateDriverForm driver={driver} onUpdate={onUpdate} />;
+    navigate('/updateBookingForm/id');
+};
+
   const data = useMemo(() => bookings, [bookings]);
 
   return (
@@ -49,10 +56,14 @@ const AllBookings = () => {
         <Column field="userNameBooking" header="Username" />
         <Column field="startDate" header="BookingDate" />
         <Column
-          body={(rowData) => (
+          body={(rowData) => (<div>
             <Link to={`/bookingSpecific/${rowData._id}`} className="p-button p-button-text">
               View Details
             </Link>
+            <Link to={`/updateBookingForm/${rowData._id}`} className="p-button p-button-text">
+              Update
+            </Link>
+            </div>
           )}
         />
       </DataTable>

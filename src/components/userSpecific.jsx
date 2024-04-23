@@ -36,7 +36,7 @@ const UserSpecific = () => {
             if (!response.ok) {
                 throw new Error('Failed to delete user');
             }
-            navigate('/');
+            navigate('/user');
         } catch (error) {
             console.error('Error deleting User:', error);
         }

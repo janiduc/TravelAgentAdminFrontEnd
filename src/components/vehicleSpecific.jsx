@@ -36,7 +36,7 @@ const VehicleSpecific = () => {
             if (!response.ok) {
                 throw new Error('Failed to delete Vehicle');
             }
-            navigate('/');
+            navigate('/vehicle');
         } catch (error) {
             console.error('Error deleting Vehicle:', error);
         }

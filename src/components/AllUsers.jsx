@@ -31,12 +31,19 @@ const AllUsers = () => {
       }
       const data = await response.json();
       setUsers(data.users);
-      console.log(users)
+      //console.log(users)
     } catch (error) {
       console.error('Error fetching User data:', error);
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleUpdate = (id) => {
+    // // Find the driver by id and pass it to the update form
+    // const driver = drivers.find((driver) => driver._id === id);
+    // return <UpdateDriverForm driver={driver} onUpdate={onUpdate} />;
+    navigate('/updateUserForm/id');
   };
 
   const data = useMemo(() => users, [users]);
@@ -50,10 +57,14 @@ const AllUsers = () => {
         <Column field="username" header="UserName" />
         <Column field="name" header="Name" />
         <Column
-          body={(rowData) => (
+          body={(rowData) => (<div>
             <Link to={`/userSpecific/${rowData._id}`} className="p-button p-button-text">
               View Details
             </Link>
+            <Link to={`/updateUserForm/${rowData._id}`} className="p-button p-button-text">
+              Update
+            </Link>
+            </div>
           )}
         />
       </DataTable>
